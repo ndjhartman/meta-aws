@@ -18,10 +18,9 @@ RDEPENDS_${PN} = "python3"
 # Copy examples into rootfs
 do_install_append() {
     install -d ${D}${datadir}/${BPN}/
-    install -d ${D}/root/.aws
+    install -d ${D}/root/.aws/
     cp --preserve=mode,timestamps -r ${S}/boto3/examples/ ${D}${datadir}/${BPN}
 }
 
 # Associate generated files with package
-FILES_${PN} += "${datadir}/${BPN}/*"
-FILES_${PN} += "/root/.aws/*"
+FILES_${PN} += "${datadir}/${BPN}/ /root/.aws/"
